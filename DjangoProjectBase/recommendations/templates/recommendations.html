@@ -1,0 +1,18 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">Find your next movie</h2>
+    <p class="text-center">Write a topic and I will recommend a movie.</p>
+
+    <form method="post" class="text-center mt-3">
+        {% csrf_token %}
+        <input type="text" name="prompt" class="form-control w-50 mx-auto" placeholder="Example: Science fiction movie" required>
+        <button type="submit" class="btn btn-primary mt-3">Search</button>
+    </form>
+
+    {% if error %}
+        <div class="alert alert-danger mt-3 text-center">{{ error }}</div>
+    {% endif %}
+</div>
+{% endblock %}
